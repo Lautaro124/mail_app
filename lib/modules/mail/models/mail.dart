@@ -1,5 +1,5 @@
 class Mail {
-  final String title, userName, info;
+  final String title, userName, info, userAvatar;
   final bool isviewed;
 
   Mail({
@@ -7,5 +7,6 @@ class Mail {
     required this.userName,
     required this.info,
     required this.isviewed,
+    required this.userAvatar,
   });
 }

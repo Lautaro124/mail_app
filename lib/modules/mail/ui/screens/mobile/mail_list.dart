@@ -12,32 +12,13 @@ class MailListMobile extends StatelessWidget {
         children: [
           MailCard(
             mail: Mail(
+                userAvatar:
+                    'https://concepto.de/wp-content/uploads/2018/08/persona-e1533759204552.jpg',
                 title: 'title',
                 userName: 'userName',
                 info: 'info',
                 isviewed: false),
-          ),
-          MailCard(
-            mail: Mail(
-                title: 'title',
-                userName: 'userName',
-                info: 'info',
-                isviewed: false),
-          ),
-          MailCard(
-            mail: Mail(
-                title: 'title',
-                userName: 'userName',
-                info: 'info',
-                isviewed: false),
-          ),
-          MailCard(
-            mail: Mail(
-                title: 'title',
-                userName: 'userName',
-                info: 'info',
-                isviewed: false),
-          ),
+          )
         ],
       ),
     );

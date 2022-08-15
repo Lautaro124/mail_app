@@ -19,6 +19,8 @@ class _MailDetailMobileState extends State<MailDetailMobile> {
       mobileScreen: MailDetailCard(
         mailDetail: MailDetail(
           mail: Mail(
+            userAvatar:
+                'https://concepto.de/wp-content/uploads/2018/08/persona-e1533759204552.jpg',
             title: 'title',
             userName: 'userName',
             info: 'info',

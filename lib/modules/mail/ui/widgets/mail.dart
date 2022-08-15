@@ -21,20 +21,39 @@ class _MailCardState extends State<MailCard> {
       onTap: widget.onPress ??
           () => Navigator.pushNamed(context, NavigationRoute.mailDetail.name),
       child: Container(
+        height: 100,
         padding: const EdgeInsets.only(top: 10, bottom: 10, left: 5, right: 50),
         margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.grey,
         ),
-        child: ListBody(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ListTile(
-              title: Text(mail.title),
-              subtitle: Text(mail.userName),
+            Container(
+              margin: const EdgeInsets.only(left: 10, right: 20),
+              child: CircleAvatar(
+                radius: 35,
+                backgroundImage: NetworkImage(mail.userAvatar),
+              ),
             ),
-            Center(
-              child: Text(mail.info),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(mail.title),
+                    Text(mail.userName),
+                  ],
+                ),
+                Center(
+                  child: Text(mail.info),
+                ),
+              ],
             ),
           ],
         ),
