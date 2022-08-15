@@ -36,44 +36,50 @@ class _MailCardState extends State<MailCard> {
               margin: const EdgeInsets.only(left: 10, right: 20),
               child: UserAvatar(userAvatar: mail.userAvatar),
             ),
-            SizedBox(
-              width: 240,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 4,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          mail.userName,
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                        Text(
-                          mail.title,
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: Text(
-                      mail.info,
-                      style: Theme.of(context).textTheme.bodySmall,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            mailContent(),
           ],
         ),
       ),
     );
   }
+
+  Widget mailContent() => SizedBox(
+        width: 240,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              flex: 4,
+              child: titles(),
+            ),
+            Expanded(
+              flex: 3,
+              child: infoPreview(),
+            ),
+          ],
+        ),
+      );
+
+  Widget titles() => Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            mail.userName,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          Text(
+            mail.title,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ],
+      );
+
+  Widget infoPreview() => Text(
+        mail.info,
+        style: Theme.of(context).textTheme.bodySmall,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+      );
 }
