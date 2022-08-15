@@ -22,44 +22,22 @@ class _MailDetailCardState extends State<MailDetailCard> {
       child: Column(
         children: [
           basicInfo(),
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(20),
-              width: 350,
-              decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    margin: const EdgeInsets.only(top: 10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 10),
-                          child: Text(
-                            mailDetail.mail.title,
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          ),
-                        ),
-                        Text(
-                          mailDetail.mail.info,
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ],
-                    ),
-                  ),
-                  mailDetail.pictures.isNotEmpty
-                      ? pictureList()
-                      : const SizedBox(),
-                ],
-              ),
+          Container(
+            padding: const EdgeInsets.all(20),
+            width: MediaQuery.of(context).size.width * 0.95,
+            decoration: BoxDecoration(
+              color: Theme.of(context).backgroundColor,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                bodyMail(),
+                mailDetail.pictures.isNotEmpty
+                    ? pictureList()
+                    : const SizedBox(),
+              ],
             ),
           ),
         ],
@@ -98,6 +76,28 @@ class _MailDetailCardState extends State<MailDetailCard> {
           title: Text(mailDetail.mail.userName),
           subtitle: Text(
               'sent on: ${mailDetail.dateSent.year}-${mailDetail.dateSent.month}-${mailDetail.dateSent.day} at ${mailDetail.dateSent.hour}:${mailDetail.dateSent.minute}'),
+        ),
+      );
+
+  Widget bodyMail() => Container(
+        height: MediaQuery.of(context).size.height * 0.5,
+        margin: const EdgeInsets.only(top: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              child: Text(
+                mailDetail.mail.title,
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+            ),
+            Text(
+              mailDetail.mail.info,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ],
         ),
       );
 }
