@@ -1,4 +1,5 @@
 import 'package:firebase_pictures_saved/modules/mail/models/mail_detail.dart';
+import 'package:firebase_pictures_saved/modules/mail/ui/widgets/user_avatar.dart';
 import 'package:flutter/material.dart';
 
 class MailDetailCard extends StatefulWidget {
@@ -26,14 +27,34 @@ class _MailDetailCardState extends State<MailDetailCard> {
               padding: const EdgeInsets.all(20),
               width: 350,
               decoration: BoxDecoration(
-                color: Colors.blueGrey,
+                color: Theme.of(context).backgroundColor,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(mailDetail.mail.info),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    margin: const EdgeInsets.only(top: 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 10),
+                          child: Text(
+                            mailDetail.mail.title,
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
+                        ),
+                        Text(
+                          mailDetail.mail.info,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ],
+                    ),
+                  ),
                   mailDetail.pictures.isNotEmpty
                       ? pictureList()
                       : const SizedBox(),
@@ -72,19 +93,11 @@ class _MailDetailCardState extends State<MailDetailCard> {
 
   Widget basicInfo() => Container(
         margin: const EdgeInsets.only(top: 10, bottom: 20),
-        child: Row(
-          children: [
-            CircleAvatar(
-              radius: 35,
-              backgroundImage: NetworkImage(mailDetail.mail.userAvatar),
-            ),
-            Column(
-              children: [
-                Text(mailDetail.mail.title),
-                Text(mailDetail.mail.userName),
-              ],
-            ),
-          ],
+        child: ListTile(
+          leading: UserAvatar(userAvatar: mailDetail.mail.userAvatar),
+          title: Text(mailDetail.mail.userName),
+          subtitle: Text(
+              'sent on: ${mailDetail.dateSent.year}-${mailDetail.dateSent.month}-${mailDetail.dateSent.day} at ${mailDetail.dateSent.hour}:${mailDetail.dateSent.minute}'),
         ),
       );
 }

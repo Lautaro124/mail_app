@@ -1,4 +1,4 @@
-import 'package:firebase_pictures_saved/modules/mail/models/mail.dart';
+import 'package:firebase_pictures_saved/modules/mail/resources/data.dart';
 import 'package:firebase_pictures_saved/modules/mail/ui/widgets/mail.dart';
 import 'package:flutter/material.dart';
 
@@ -7,19 +7,16 @@ class MailListMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Column(
-        children: [
-          MailCard(
-            mail: Mail(
-                userAvatar:
-                    'https://concepto.de/wp-content/uploads/2018/08/persona-e1533759204552.jpg',
-                title: 'title',
-                userName: 'userName',
-                info: 'info',
-                isviewed: false),
-          )
-        ],
+    return Container(
+      margin: const EdgeInsets.only(top: 20),
+      child: ListView.separated(
+        itemCount: users.length,
+        itemBuilder: (context, index) => MailCard(
+          mail: users[index],
+        ),
+        separatorBuilder: (context, index) => Divider(
+          color: Theme.of(context).dividerColor,
+        ),
       ),
     );
   }
