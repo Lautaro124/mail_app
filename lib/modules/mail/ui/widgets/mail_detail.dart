@@ -21,29 +21,61 @@ class _MailDetailCardState extends State<MailDetailCard> {
       padding: const EdgeInsets.all(10),
       child: Column(
         children: [
-          basicInfo(),
-          Container(
-            padding: const EdgeInsets.all(20),
-            width: MediaQuery.of(context).size.width * 0.95,
-            decoration: BoxDecoration(
-              color: Theme.of(context).backgroundColor,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                bodyMail(),
-                mailDetail.pictures.isNotEmpty
-                    ? pictureList()
-                    : const SizedBox(),
-              ],
-            ),
-          ),
+          sentBy(),
+          mailBody(),
         ],
       ),
     );
   }
+
+  Widget sentBy() => Container(
+        margin: const EdgeInsets.only(top: 10, bottom: 20),
+        child: ListTile(
+          leading: UserAvatar(userAvatar: mailDetail.mail.userAvatar),
+          title: Text(mailDetail.mail.userName),
+          subtitle: Text(
+              'sent on: ${mailDetail.dateSent.year}-${mailDetail.dateSent.month}-${mailDetail.dateSent.day} at ${mailDetail.dateSent.hour}:${mailDetail.dateSent.minute}'),
+        ),
+      );
+
+  Widget mailBody() => Container(
+        padding: const EdgeInsets.all(20),
+        width: MediaQuery.of(context).size.width * 0.95,
+        decoration: BoxDecoration(
+          color: Theme.of(context).backgroundColor,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            mailInfo(),
+            mailDetail.pictures.isNotEmpty ? pictureList() : const SizedBox(),
+          ],
+        ),
+      );
+
+  Widget mailInfo() => Container(
+        height: MediaQuery.of(context).size.height * 0.5,
+        margin: const EdgeInsets.only(top: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              child: Text(
+                mailDetail.mail.title,
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+            ),
+            Text(
+              mailDetail.mail.info,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ],
+        ),
+      );
 
   Widget pictureList() => Container(
         margin: const EdgeInsets.only(top: 10),
@@ -66,38 +98,6 @@ class _MailDetailCardState extends State<MailDetailCard> {
                 ),
               )
               .toList(),
-        ),
-      );
-
-  Widget basicInfo() => Container(
-        margin: const EdgeInsets.only(top: 10, bottom: 20),
-        child: ListTile(
-          leading: UserAvatar(userAvatar: mailDetail.mail.userAvatar),
-          title: Text(mailDetail.mail.userName),
-          subtitle: Text(
-              'sent on: ${mailDetail.dateSent.year}-${mailDetail.dateSent.month}-${mailDetail.dateSent.day} at ${mailDetail.dateSent.hour}:${mailDetail.dateSent.minute}'),
-        ),
-      );
-
-  Widget bodyMail() => Container(
-        height: MediaQuery.of(context).size.height * 0.5,
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(bottom: 10),
-              child: Text(
-                mailDetail.mail.title,
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-            ),
-            Text(
-              mailDetail.mail.info,
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-          ],
         ),
       );
 }
