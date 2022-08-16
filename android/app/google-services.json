@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "144878556616",
+    "project_id": "mail-359523",
+    "storage_bucket": "mail-359523.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144878556616:android:d02bfa2f2edc83fa36dcfd",
+        "android_client_info": {
+          "package_name": "com.example.firebase_pictures_saved"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "144878556616-jhqi684b4ibp6bou3b2f4737oglkftof.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtIPlIY-L_GX2LJJDdVefxVg8SHPFOimo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "144878556616-jhqi684b4ibp6bou3b2f4737oglkftof.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "144878556616-6qov4sjuvl5bn1nq2unha10ni692mf6k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebasePicturesSaved"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

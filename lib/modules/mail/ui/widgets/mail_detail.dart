@@ -1,5 +1,5 @@
 import 'package:firebase_pictures_saved/modules/mail/models/mail_detail.dart';
-import 'package:firebase_pictures_saved/modules/mail/ui/widgets/user_avatar.dart';
+import 'package:firebase_pictures_saved/widgets/user_avatar.dart';
 import 'package:flutter/material.dart';
 
 class MailDetailCard extends StatefulWidget {

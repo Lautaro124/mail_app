@@ -4,13 +4,13 @@ class ResponsiveScreen extends StatefulWidget {
   final double sizeScreen;
   final Widget mobileScreen;
   final Widget? webScreen;
-  final PreferredSizeWidget? preferredSizeWidget;
+  final PreferredSizeWidget? appbar;
 
   const ResponsiveScreen({
     Key? key,
     required this.mobileScreen,
     required this.sizeScreen,
-    this.preferredSizeWidget,
+    this.appbar,
     this.webScreen,
   }) : super(key: key);
 
@@ -22,7 +22,7 @@ class _ResponsiveScreenState extends State<ResponsiveScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: widget.preferredSizeWidget ?? AppBar(),
+      appBar: widget.appbar ?? AppBar(),
       body: SafeArea(
         child: SizedBox(
           width: widget.sizeScreen,

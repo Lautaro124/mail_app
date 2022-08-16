@@ -1,6 +1,7 @@
 import 'package:firebase_pictures_saved/modules/mail/models/mail_detail.dart';
 import 'package:firebase_pictures_saved/modules/mail/resources/data.dart';
 import 'package:firebase_pictures_saved/modules/mail/ui/widgets/mail_detail.dart';
+import 'package:firebase_pictures_saved/modules/user/ui/widgets/appbar.dart';
 import 'package:firebase_pictures_saved/widgets/responsive_scree.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class _MailDetailMobileState extends State<MailDetailMobile> {
   Widget build(BuildContext context) {
     return ResponsiveScreen(
       sizeScreen: MediaQuery.of(context).size.width,
+      appbar: appBar('Detail'),
       mobileScreen: MailDetailCard(
         mailDetail: MailDetail(
           mail: user,

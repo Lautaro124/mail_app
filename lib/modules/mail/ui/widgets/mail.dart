@@ -1,6 +1,6 @@
 import 'package:firebase_pictures_saved/modules/mail/models/mail.dart';
-import 'package:firebase_pictures_saved/modules/mail/ui/widgets/user_avatar.dart';
 import 'package:firebase_pictures_saved/resource/navigator_enum.dart';
+import 'package:firebase_pictures_saved/widgets/user_avatar.dart';
 import 'package:flutter/material.dart';
 
 class MailCard extends StatefulWidget {
